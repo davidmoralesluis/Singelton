@@ -1,14 +1,32 @@
 package singleton;
 
 public class Main {
+
     public static void main(String[] args) {
+        System.out.println("Proyecto para aprender a hacer un Singleton");
 
-        Singelton obx1 = new Singelton();
+        //intento instanciar un objeto con el constructor privado
+        // esto es un error
+        // Singleton miUnicaInstancia = new Singleton();
 
-        System.out.println("obx1: "+obx1.nombre());
+        // creamos un objeto
+        Singleton miUnicaInstancia = Singleton.getInstance();
+        // rellenamos los atributos
+        miUnicaInstancia.setEdad(20);
+        miUnicaInstancia.setNombre("Pepe");
 
-        Singelton obx2 = new Singelton();
+        // creamos otro objeto Singleton
+        // como la única manera es con getInstance(), este método se encargará
+        // de devolvernos el objeto creado anteriormente
+        Singleton otraInstanciaSeraLaMisma = Singleton.getInstance();
+        // podemos cambiar la edad
+        // comprobar con el debug que los dos objetos:
+        // miUnicaInstancia y otraInstanciaSeraLaMisma son el mismo
+        otraInstanciaSeraLaMisma.setEdad(34);
 
-        System.out.println("obx2: "+obx2.nombre());
+
+        // version 1.1 del programa con otra instancia
+        Singleton versionInstancia = Singleton.getInstance();
+        versionInstancia.setNombre("version 1.1");
     }
 }
